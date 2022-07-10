@@ -5,7 +5,6 @@ https://explorer.3achain.org/token/0x1cC4967fF6592E6672827809767dF82A49f7c30D
 
 ## Data
 
-The data is set into `/data` and it's saved in json syntax.
 This is a example of a value in the dataset
 
 ```ts
@@ -23,34 +22,33 @@ Attenction! The time is in UTC
 
 ## Automatic update of the dataset
 
-This reposity automatically update his dataset at midnight GMT+2
-to get the data make an api call to the row github file, for example:
+This reposity automatically update his dataset at midnight GMT+2, the updated data is stored into the **dataset branch**. \
+To get the data make an api call to the row github file, for example:
 
-```bash
-https://raw.githubusercontent.com/Sau1707/LuganoCoinDataset/main/data/last/month.json
+```
+https://raw.githubusercontent.com/LuganoStats/LVGAPoint-Dataset/dataset/last/3month.json
 ```
 
 ## Manually update the dataset
 
-To update the dataset:
-
-```bash
+```
 pip install -r requirements.txt
 ```
 
 to install python pagkages requirements, then
 
-```bash
+```
 cd src
 ```
 
 to got the the current directory, then
 
-```bash
+```
 python main.py
 ```
 
-it automatically download the new data and update the last inside data folder, as well year and month.
+it automatically download the new data and update the last inside ```/data``` folder into json syntax, as well year and month.
+
 
 ## Disclaimer
 
