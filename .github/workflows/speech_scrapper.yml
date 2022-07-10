@@ -1,4 +1,4 @@
-name: Update-data
+name: Update-dataset
 
 on:
     schedule:
@@ -12,32 +12,27 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - name: checkout repo content
+            - name: Checkout repo content
               uses: actions/checkout@v2 # checkout the repository content to github runner
 
-            - name: setup python
+            - name: Setup python
               uses: actions/setup-python@v2
               with:
                   python-version: "3.10.5" # install the python version needed
 
-            - name: install python packages
+            - name: Install python packages
               run: |
                   pip install -r requirements.txt
 
-            - name: execute py script # run sj-gobierno.py to get the latest data
+            - name: Execute py script
               run: |
                   cd src
                   python main.py
 
-            - name: commit files
-              run: |
-                  git config --local user.email "action@github.com"
-                  git config --local user.name "GitHub Action"
-                  git add -A
-                  git commit -m "update data" -a
-
-            - name: push changes
-              uses: ad-m/github-push-action@v0.6.0
-              with:
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
-                  branch: main
+            - name: Deploy changes
+              uses: s0/git-publish-subdir-action@develop
+              env:
+                  REPO: self
+                  BRANCH: gh-pages
+                  FOLDER: data
+                  SSH_PRIVATE_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
