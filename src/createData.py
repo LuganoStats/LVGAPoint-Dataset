@@ -1,3 +1,4 @@
+import os
 import csv
 import json
 import datetime
@@ -6,6 +7,18 @@ from constant import FILENAME
 
 DATAFOLDER = "../data"
 
+'''
+On file load check if data folder exist
+'''
+
+if not os.path.exists(DATAFOLDER):
+    os.makedirs(DATAFOLDER)
+if not os.path.exists(f'{DATAFOLDER}/year'):
+    os.makedirs(f'{DATAFOLDER}/year')
+if not os.path.exists(f'{DATAFOLDER}/month'):
+    os.makedirs(f'{DATAFOLDER}/month')
+if not os.path.exists(f'{DATAFOLDER}/last'):
+    os.makedirs(f'{DATAFOLDER}/last')
 '''
     Generate file
 '''
